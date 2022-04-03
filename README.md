@@ -19,7 +19,7 @@ I couldn't find any object for that back button in the top menu under `names.py`
 
 `topMenu_back = {"container": application_window, "id": "backButton", "type": "RMIconButton"}`
 
-![](/Users/pandeyg/Downloads/IMG_7251.png)
+![Back_Button](resources/IMG_7251.png)
 
 Additional methods added in `library_helper.py`
 ---
@@ -56,6 +56,6 @@ Since there is no folder left to move these selected folders to, we won't be abl
 It should be noted that when all the `Documents` are selected under `My Files` then the drawer only shows the option to Copy, and doesn't provide any option to Move these files.
 I believe both should be consistent and the system should not give the option to Move all the folders.
 
-![](/Users/pandeyg/Downloads/IMG_52CE24B3AB08-1.png)
+![Bug_Screenshot](resources/IMG_52CE24B3AB08-1.png)
 
 Note from the screenshot above that when all the folders are selected, there is no destination left to Move these selected folders to. 
