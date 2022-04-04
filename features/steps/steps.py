@@ -86,6 +86,7 @@ def step_impl(context, folder_name, document_name):
     waitForObject(names.movePanel_move)
     test.verify(find_visible_folder(folder_name) == None)
 
+
 @Given('that more than two documents are available and selection header is displayed for "{document_name}" document')
 def step_impl(context, document_name):
     # In the below steps we long press on the document and verify if selection header is displayed
@@ -129,8 +130,8 @@ def step_impl(context):
     ## data to start the test
     find_all_visible_documents() # returns a list ALL_VISIBLE_DOCUMENTS
     find_all_visible_folders()   # returns a list ALL_VISIBLE_FOLDERS
-    if(len(ALL_VISIBLE_DOCUMENTS) > 0 & len(ALL_VISIBLE_FOLDERS) > 0):
-        pass
+    if(len(ALL_VISIBLE_DOCUMENTS) > 0 & len(ALL_VISIBLE_FOLDERS) > 0): # verifies if there is at least one visible
+        pass                                                           # document and folder under My Files
 
 
 @Given('the "{document_name}" document is ready to be moved')
@@ -228,7 +229,10 @@ def step_impl(context, folder_name):
     mouseClisk(waitForObject(names.header_confirm_selection))
 
     # In the below step user selects the Move button from the drawer
-    mouseClick(waitForObject(names.drawer_move))
+    try:
+        mouseClick(waitForObject(names.drawer_move))
+    except:
+        raise ValueError("All documents are selected, hence can't perform move.")
 
     # In the below steps user selects the destination folder, and returns an exception if the destination folder is not
     # available under My Files
@@ -246,10 +250,9 @@ def step_impl(context, folder_name):
     # In the below step user clicks on select multiple button from selection header
     mouseClick(waitForObject(names.header_select_multiple))
 
-                                            # In the below steps user selects one more folder under My Files
-    SELECTED_FOLDERS.clear()                 # Clearing the list in start so that there are no previous data.
-    find_all_visible_folders()               # result saved in the global list ALL_VISIBLE_FOLDERS
-    count = 0
+    SELECTED_FOLDERS.clear()                 # In the below steps user selects one more folder under My Files
+    find_all_visible_folders()               # Clearing the list in start so that there are no previous data.
+    count = 0                                # result saved in the global list ALL_VISIBLE_FOLDERS
     for i in ALL_VISIBLE_FOLDERS:
         if not is_folder_selected(i):                           # If there is any folder not already selected, then we will select it. This is
             mouseClick(waitForObject(find_visible_folder(i)))   # done to ensure we don't do a mouse click on already selected folder, as that will de-select it.
@@ -326,8 +329,8 @@ def step_impl(context):
     # use selects all folders under My Files
     list = find_all_visible_folders()
     for i in list:
-        if not is_folder_selected(i)
-        mouseClick(waitForObject(find_visible_folder(i)))
+        if not is_folder_selected(i):
+            mouseClick(waitForObject(find_visible_folder(i)))
 
     # user confirms selection by choosing Done button
     mouseClisk(waitForObject(names.header_confirm_selection))
@@ -371,8 +374,8 @@ def step_impl(context, folder_name, document_name):
     test.verify(find_visible_folder(folder_name) != None)
 
     # In the below step we verify that the moved folder contains the document
-    mouseClick(find_visible_folder(Folder))
-    test.verify(find_visible_document(Test) != None)
+    mouseClick(find_visible_folder(folder_name))
+    test.verify(find_visible_document(document_name) != None)
 
 
 ### This step will verify that all the selected documents are moved to the destination folder

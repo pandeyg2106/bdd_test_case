@@ -1,14 +1,26 @@
 An overview of the solution
 ===
-As a part of the solution I have created a total of 10 scenarios to test the Move functionality.
-Apart from the three scenarios required to complete, I have added the following other scenarios:
+
+### Language Used: Python 3.7 (venv)
+### IDE used: PyCharm 
+
+
+As a part of the solution I have created a total of 10 scenarios to test the Move functionality. 
+All these scenarios are created using the Behave API in BDD style. 
+
+The feature file here has used Given, When, Then, And keywords with the step definition file using the Given, When, Then, Step decorators.
+
+Including the three scenarios required to complete, I have added the following other scenarios:
 
     1. Long press folder to verify move action is accessable.
-    2. Move single folder with data to another folder.
-    3. Multiple documents can be moved to a different folder.
-    4. Multiple folders can be moved to a different folder.
-    5. All documents can't be moved from library.
-    6. All folders can't be moved from library.
+    2. Move single file to folder
+    3. Move single folder with data to another folder.
+    4. Multiple documents can be moved to a different folder.
+    5. Multiple folders can be moved to a different folder.
+    6. Move file and folder to folder
+    7. Move file to folder by searching for destination
+    8. All documents can't be moved from library.
+    9. All folders can't be moved from library.
 
 Additional object added in `names.py`
 ---
@@ -48,6 +60,23 @@ This method will take the _document_name_ as a parameter and returns a boolean v
     6. def is_folder_selected(folder_name):
 
 This method will take the _folder_name_ as a parameter and returns a boolean value for if the folder is selected or not.
+
+Global variables added in the `step.py`
+---
+
+The following global list variables are added in `step.py` to assist in testing.
+
+    1. SELECTED_DOCUMENTS as a List
+This list will save the names of all the _selected_ documents in the current view.
+
+    2. SELECTED_FOLDERS as a List
+This list will save the names of all the _selected_ folders in the current view.
+    
+    3. ALL_VISIBLE_DOCUMENTS as a List
+This list will save the names of all the _visible_ documents in the current view.
+
+    4. ALL_VISIBLE_FOLDERS as a List
+This list will save the names of all the _visible_ folders in the current view.
 
 A bug I found while writing the tests
 ---

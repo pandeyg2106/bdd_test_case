@@ -7,6 +7,11 @@
 # |--- Some folder/ (empty)
 # |--- Some other folder/ (empty)
 
+# Some terminologies used in this test which would be useful to know beforehand:
+# When the scenario says the files/folders are "ready to move" it implies that the move panel is visible for those files/folders.
+# When the scenario says that for a document/folder "selection header is displayed", it implies that the document/folder is already selected.
+
+
 Feature: Move files and folders
 
   This feature should test the different aspects of moving files and folders
@@ -23,6 +28,7 @@ Feature: Move files and folders
     And the user selects move from the drawer
     Then the user should be prompted with the move panel
 
+  # At least test here that move button is working
   Scenario: Move single file to folder
     Given the "Test" document is visible in My Files and is ready to move
     When the user moves the document to "Folder" folder
@@ -49,6 +55,7 @@ Feature: Move files and folders
     When the user selects multiple folders and move them to "Some folder" folder
     Then all selected folders are visible in the destination folder
 
+  # In this scenario the folder can be empty or non empty
   Scenario: Move file and folder to folder
     Given My files has a file and a folder to move
     When the user selects "Some other folder" and a "Test" document
