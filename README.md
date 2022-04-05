@@ -12,19 +12,19 @@ All these scenarios are created using the Behave API in BDD style.
 1. When the scenario says the files/folders are `ready to move` it implies that the move panel is visible for those files/folders.
 2. When the scenario says that for a document/folder `selection header is displayed`, it implies that the document/folder is already selected.
 
-The feature file here has used Given, When, Then, And keywords with the step definition file using the Given, When, Then, Step decorators.
+In the feature file here I have used `Given`, `When`, `Then`, `And` keywords with the step definition file using the `Given`, `When`, `Then`, `Step` decorators respectively.
 
 Including the three scenarios required to complete, I have added the following other scenarios:
 
-    1. Long press folder to verify move action is accessable.
+    1. Long press folder to access move action
     2. Move single file to folder
-    3. Move single folder with data to another folder.
-    4. Multiple documents can be moved to a different folder.
-    5. Multiple folders can be moved to a different folder.
+    3. Move single folder with data to another folder
+    4. Multiple documents can be moved to a different folder
+    5. Multiple folders can be moved to a different folder
     6. Move file and folder to folder
     7. Move file to folder by searching for destination
-    8. All documents can't be moved from library.
-    9. All folders can't be moved from library.
+    8. All documents can't be moved from library
+    9. All folders can't be moved from library
 
 Additional object added in `names.py`
 ---
