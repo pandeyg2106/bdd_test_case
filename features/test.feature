@@ -28,7 +28,12 @@ Feature: Move files and folders
     And the user selects move from the drawer
     Then the user should be prompted with the move panel
 
-  # At least test here that move button is working
+  Scenario: Cancel Move operation
+    Given the "Test" document is visible in My Files and is ready to move
+    When the user cancels the move operation
+    Then the move panel should be closed
+    And the "Test" document is again visible in My Files
+
   Scenario: Move single file to folder
     Given the "Test" document is visible in My Files and is ready to move
     When the user moves the document to "Folder" folder
@@ -72,10 +77,16 @@ Feature: Move files and folders
     When the user selects all documents under My Files
     Then the user should not be allowed to move all the files
 
-  Scenario: All folders can't be moved from library
+  Scenario: All folders can be moved from library to new folder
     Given the selection header is displayed for "Folder" folder
     When the user selects all folders under My Files
     # It looks like the below step will fail as I can see the move button in drawer when all folders are selected.
     # When I select all the folders under My Files I see the Move button in drawer, but there is no folder left to move
     # these items to. In case of Documents, I do not see the move button when all documents are selected.
     Then the user should not be allowed to move all the files
+
+  Scenario: User should be allowed to create a New Folder
+    Given The new folder button is available in the top menu
+    When the user creates a new folder named "New folder"
+    Then the "New folder" should be visible in My Files
+

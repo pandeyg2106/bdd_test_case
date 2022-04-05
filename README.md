@@ -5,7 +5,7 @@ An overview of the solution
 ### IDE used: PyCharm 
 
 
-As a part of the solution I have created a total of 10 scenarios to test the Move functionality. 
+As a part of the solution I have created a total of 11 scenarios to test the Move functionality. 
 All these scenarios are created using the Behave API in BDD style. 
 
 #### Some terminologies used in this test which would be useful to know beforehand:
@@ -18,13 +18,20 @@ Including the three scenarios required to complete, I have added the following o
 
     1. Long press folder to access move action
     2. Move single file to folder
-    3. Move single folder with data to another folder
-    4. Multiple documents can be moved to a different folder
-    5. Multiple folders can be moved to a different folder
-    6. Move file and folder to folder
-    7. Move file to folder by searching for destination
-    8. All documents can't be moved from library
-    9. All folders can't be moved from library
+    3. Cancel Move operation
+    4. Move single folder with data to another folder
+    5. Multiple documents can be moved to a different folder
+    6. Multiple folders can be moved to a different folder
+    7. Move file and folder to folder
+    8. Move file to folder by searching for destination
+    9. All documents can't be moved from library
+    10. All folders can't be moved from library
+    11. User should be allowed to create a New Folder
+
+## Other good to add scenarios that I thought of:
+
+    1. Documents can be moved to folder which are deep inside the folder structure. Here we can provide the path of destination folder in the Given condition.
+    2. Documents can be moved from deep inside the folder structures to My Files. 
 
 Additional object added in `names.py`
 ---

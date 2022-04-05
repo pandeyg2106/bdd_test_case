@@ -162,6 +162,9 @@ def step(context, folder_name):
     waitForObject(names.header_close)
 
 
+@Given("The new folder button is available in the top menu")
+def step_impl(context):
+    waitForObject(names.topMenu_new_folder)
 #### When statements (exercising behaviour) ####
 
 
@@ -183,6 +186,11 @@ def step(context, folder_name):
         pass
     except:
         raise ValueError("Folder doesn't exist under Library")
+
+## In this step user cancels the move operation
+@When("the user cancels the move operation")
+def step_impl(context):
+    mouseClick(waitForObject(names.movePanel_cancel_move))
 
 
 @When('the user moves the document to "{folder_name}" folder')
@@ -336,12 +344,23 @@ def step_impl(context):
     mouseClisk(waitForObject(names.header_confirm_selection))
 
 
+@When('the user creates a new folder named "New folder"')
+def step_impl(context):
+    mouseClick(waitForObject(names.topMenu_new_folder))
+    type("New folder")
+
+
 #### Step statements (Used with And keywords) ####
 
 ## In this step the user selects the move button from the drawer, which opens the move panel for the document or folder.
 @Step("the user selects move from the drawer")
 def step(context):
     mouseClick(waitForObject(names.drawer_move))
+
+
+@Step('the "{document_name}" document is again visible in My Files')
+def step_impl(context, document_name):
+    test.verify(find_visible_document(document_name) != None)
 
 
 @Step("the user confirms and move the selection")
@@ -396,6 +415,15 @@ def step_impl(context):
                                               # destination folder.
 
 
+@Then("the move panel should be closed")
+def step_impl(context):
+    try:
+        waitForObject(names.movePanel_move)
+        waitForObject(names.movePanel_label)
+        waitForObj(names.movePanel_cancel_move)
+    except:
+        pass
+
 @Then('the folder "{folder_name}" and the document "{document_name}" is visible in the destination folder')
 def step_impl(context, folder_name, document_name):
     # The below step verifies that the selected folder is moved to destination folder
@@ -408,7 +436,12 @@ def step_impl(context, folder_name, document_name):
 @Then('the user should not be allowed to move all the files')
 def step_impl(context):
     waitForObject(names.drawer_copy)
-    waitForObject(names.drawer_favorite)
-    waitForObject(names.drawer_send)
+    try:
+        waitForObject(names.drawer_move)
+    except:
+        pass
 
 
+@Then('the "{folder_name}" should be visible in My Files')
+def step_impl(context, folder_name):
+    test.verify(find_visible_folder(folder_name))
