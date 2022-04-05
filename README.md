@@ -8,6 +8,10 @@ An overview of the solution
 As a part of the solution I have created a total of 10 scenarios to test the Move functionality. 
 All these scenarios are created using the Behave API in BDD style. 
 
+#### Some terminologies used in this test which would be useful to know beforehand:
+1. When the scenario says the files/folders are `ready to move` it implies that the move panel is visible for those files/folders.
+2. When the scenario says that for a document/folder `selection header is displayed`, it implies that the document/folder is already selected.
+
 The feature file here has used Given, When, Then, And keywords with the step definition file using the Given, When, Then, Step decorators.
 
 Including the three scenarios required to complete, I have added the following other scenarios:
@@ -31,7 +35,7 @@ I couldn't find any object for that back button in the top menu under `names.py`
 
 `topMenu_back = {"container": application_window, "id": "backButton", "type": "RMIconButton"}`
 
-![Back_Button](resources/IMG_7251.png)
+![Back_Button](resources/backButton.png)
 
 Additional methods added in `library_helper.py`
 ---
@@ -85,6 +89,6 @@ Since there is no folder left to move these selected folders to, we won't be abl
 It should be noted that when all the `Documents` are selected under `My Files` then the drawer only shows the option to Copy, and doesn't provide any option to Move these files.
 I believe both should be consistent and the system should not give the option to Move all the folders.
 
-![Bug_Screenshot](resources/IMG_52CE24B3AB08-1.png)
+![Bug_Screenshot](resources/bug_multipleFolder.png)
 
 Note from the screenshot above that when all the folders are selected, there is no destination left to Move these selected folders to. 
